@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Examples</title>
+
+    <script src="jquery-1.11.2.min.js"></script>
+    <link rel="stylesheet" href="bootstrap-3.3.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-3.3.2-dist/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
+
+    <script src="../jquery.vo.js"></script>
+</head>
+<body>
+<div class="center-block" style="width: 80%">
+
+    <div class="row">
+        <h2>Checkbox controlled</h2>
+
+        <div class="cb1">
+            <label>Visible on check</label>
+            <input class="checkbox1" type="checkbox">
+            <p data-condition=".checkbox1:checked" >Visible if checkbox checked</p>
+            <script>
+                jQuery(function($){
+                    $('.cb1').vt(); // Start observing for .cb1 container
+                });
+            </script>
+        </div>
+
+        <div class="cb2">
+            <label>Hide on check</label>
+            <input class="checkbox2" type="checkbox">
+            <p data-condition=".checkbox2:not(:checked)">Visible if checkbox is not checked</p>
+            <script>
+                jQuery(function($){
+                    $('.cb2').vt(); // Start observing for .cb2 container
+                });
+            </script>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <h2>Select controlled</h2>
+
+        <div class="sl1">
+            <label>Select item</label>
+            <select class="select1">
+                <option>Hide all</option>
+                <option value="1">Show item 1</option>
+                <option value="2">Show item 2</option>
+            </select>
+            <p data-condition="return $('.select1').val() == 1">Item 1 is selected</p>
+            <p data-condition="return $('.select1').val() == 2">Item 2 is selected</p>
+        </div>
+
+        <script>
+            jQuery(function($){
+                $('.sl1').vt(); // Start observing for .sl1 container
+            });
+        </script>
+    </div>
+
+    <div class="row">
+        <h2>Multiple controls</h2>
+
+        <div class="tcb1">
+            <label>Checkk use</label>
+            <input class="cb1" type="checkbox">
+            <input class="cb2" type="checkbox">
+            <p data-condition="return $('.cb1:checked, .cb2:checked').length > 1">Twice checkboxes</p>
+        </div>
+
+        <script>
+            jQuery(function($){
+                $('.tcb1').vt(); // Start observing for .tcb1 container
+            });
+        </script>
+    </div>
+
+    <div class="row">
+        <h2>Custom validation</h2>
+
+        <div class="ti1">
+            <label>Type "foo"</label>
+            <input class="cc1" type="text">
+            <p class="custom_validated" data-text="foo">Visible only if "foo" is value of this text box</p>
+        </div>
+
+        <script>
+            jQuery(function($){
+                $('.ti1').vt({
+                    elements: '.custom_validated', // Custom element selector
+                    handler: function() { // Custom handler for check of visibility condition
+                        return $('.cc1').val() == $(this).data().text;
+                    }
+                });
+            });
+        </script>
+    </div>
+
+    <div class="row">
+        <h2>Global events</h2>
+        <p><i>observe all checkboxes on this page</i></p>
+        <p data-condition="[type=checkbox]:checked">Any Checkbox is checked</p>
+        <script>
+            jQuery(function($){
+                $(document).vt({
+                    controls: "[type=checkbox]"
+                });
+            });
+        </script>
+    </div>
+
+    <div class="row ajax1">
+        <h2>observ DOM changes</h2>
+
+        <a>Click Me</a>
+        <div class="ajax_content"></div>
+
+        <p data-condition="return $('.ajax_content').html() == ''">no content</p>
+        <p data-condition="return $('.ajax_content').html() != ''">content is loaded</p>
+
+        <script>
+            jQuery(function($){
+                var $container = $('.ajax1');
+                $container.vt(); // Start observing
+
+                // Changing of HTML-Tree with AJAX loaded content
+                $container.on('click', 'a', function(event){
+                    event.preventDefault();
+
+                    // Show "no content" after clean
+                    $('.ajax_content').html("");
+
+                    // Show "content is loaded" after append
+                    setTimeout(function(){
+                        $('.ajax_content').load("ajax_content.txt");
+                    }, 1000);
+                });
+            });
+
+        </script>
+    </div>
+
+</div>
+
+</body>
+</html>
