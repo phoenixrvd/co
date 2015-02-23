@@ -23,7 +23,19 @@
             <p data-condition=".checkbox1:checked" >Visible if checkbox checked</p>
             <script>
                 jQuery(function($){
-                    $('.cb1').co(); // Start observing for .cb1 container
+                    $('.cb1').on('change', "[type=checkbox]", function(){
+                        var $this = $(this);
+                        var $text = $('.content');
+                        if($this.is(':checked')){
+                            $text.show();
+                            setTimeout(function(){
+                                $this.trigger('click');
+                            }, 2000)
+                        }else{
+                            $text.hide();
+                        }
+                    });
+                    //$('.cb1').co(); // Start observing for .cb1 container
                 });
             </script>
         </div>
