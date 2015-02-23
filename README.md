@@ -1,8 +1,43 @@
-#Condition observer
+#jQuery Condition Observer
 
-##Examples
+Es wird oft benötigt, ein HTML-Element, je nach zustand von anderen Komponenten auf der Webseite ein-/auszublenden. Üblicherweise macht man es im Eventhandler, was natürlich die eigentliche "condition" im code verschleiert.
 
-###Default usage
+Mit dem Plugin kann man die "condition" in Metadaten von HTML-Element direkt festlegen und dadurch GUI und eigentliche Applikationslogik viel besser voneinander trennen.
+
+
+##Installation
+```html
+<head>
+  <script src="jquery.min.js"></script>
+  <script src="jquery.co.js"></script>
+</head>
+```
+
+##Tests
+```sh
+$ open ./test/test.html
+```
+
+##Nutzung
+**Observer starten**
+
+observer für ein bestimmten HTML-Bereich registrieren.
+```javascript
+$('.conten').co();
+```
+
+**Conditions festlegen**
+
+Text anzeigen, nur wenn **.conten .checkbox** angehackt ist
+```html
+<p data-condition=".checkbox1:checked" >Visible if checkbox checked</p>
+```
+
+##Komplettbeispiele
+
+###Standard
+Wenn jQuery-Selectors für validierung reichen.
+
 ```html
 <div class="content">
     <label>Visible on check</label>
@@ -15,7 +50,9 @@
 $('.content').co();
 ```
 
-###JavaScript conditions
+###JavaScript-Condition
+Wenn man komplexere Prüfungen durchführen will, kann man JavaScript benutzen.
+
 ```html
 <div class="content">
     <label>Select item</label>
@@ -33,7 +70,9 @@ $('.content').co();
 $('.content').co();
 ```
 
-###Observing DOM-Changes
+###DOM-Observer
+Das Plugin wird auch Änderungen an HTML-Baum beachten und automatisch die Sichtbarkeit ändern, wenn die 'condition' nicht mehr stimmt.
+
 ```html
 <div class="content">
     <a>Click Me</a>
