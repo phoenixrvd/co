@@ -1,4 +1,4 @@
-#Visibility observer
+#Condition observer
 
 ##Examples
 
@@ -12,7 +12,7 @@
 ```
 
 ```javascript
-$('.content').vt();
+$('.content').co();
 ```
 
 ###Validation with JavaScript
@@ -30,7 +30,7 @@ $('.content').vt();
 ```
 
 ```javascript
-$('.content').vt();
+$('.content').co();
 ```
 
 ###Observing DOM-Changes
@@ -46,7 +46,7 @@ $('.content').vt();
 
 ```javascript
 var $container = $('.content');
-$container.vt(); // Start observing
+$container.co(); // Start observing
 
 // Changing of HTML-Tree with AJAX loaded content
 $container.on('click', 'a', function(event){

@@ -23,7 +23,7 @@
             <p data-condition=".checkbox1:checked" >Visible if checkbox checked</p>
             <script>
                 jQuery(function($){
-                    $('.cb1').vt(); // Start observing for .cb1 container
+                    $('.cb1').co(); // Start observing for .cb1 container
                 });
             </script>
         </div>
@@ -34,7 +34,7 @@
             <p data-condition=".checkbox2:not(:checked)">Visible if checkbox is not checked</p>
             <script>
                 jQuery(function($){
-                    $('.cb2').vt(); // Start observing for .cb2 container
+                    $('.cb2').co(); // Start observing for .cb2 container
                 });
             </script>
         </div>
@@ -57,7 +57,7 @@
 
         <script>
             jQuery(function($){
-                $('.sl1').vt(); // Start observing for .sl1 container
+                $('.sl1').co(); // Start observing for .sl1 container
             });
         </script>
     </div>
@@ -74,7 +74,7 @@
 
         <script>
             jQuery(function($){
-                $('.tcb1').vt(); // Start observing for .tcb1 container
+                $('.tcb1').co(); // Start observing for .tcb1 container
             });
         </script>
     </div>
@@ -90,7 +90,7 @@
 
         <script>
             jQuery(function($){
-                $('.ti1').vt({
+                $('.ti1').co({
                     elements: '.custom_validated', // Custom element selector
                     handler: function() { // Custom handler for check of visibility condition
                         return $('.cc1').val() == $(this).data().text;
@@ -106,7 +106,7 @@
         <p data-condition="[type=checkbox]:checked">Any Checkbox is checked</p>
         <script>
             jQuery(function($){
-                $(document).vt({
+                $(document).co({
                     controls: "[type=checkbox]"
                 });
             });
@@ -125,7 +125,7 @@
         <script>
             jQuery(function($){
                 var $container = $('.ajax1');
-                $container.vt(); // Start observing
+                $container.co(); // Start observing
 
                 // Changing of HTML-Tree with AJAX loaded content
                 $container.on('click', 'a', function(event){

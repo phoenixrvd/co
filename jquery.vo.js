@@ -85,6 +85,6 @@
         return self;
     };
 
-    $.fn.vo = self;
+    $.fn.co = self;
 
 })(jQuery);
