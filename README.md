@@ -15,7 +15,7 @@
 $('.content').co();
 ```
 
-###Validation with JavaScript
+###JavaScript conditions
 ```html
 <div class="content">
     <label>Select item</label>
