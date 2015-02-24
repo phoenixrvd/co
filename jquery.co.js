@@ -1,3 +1,9 @@
+/**
+ * jQuery Condition Observer
+ * @copyright 2015, phoenixrvd
+ * @link https://github.com/phoenixrvd/co
+ * @license MIT
+ */
 ;(function($){
 
     var defConfig = {
